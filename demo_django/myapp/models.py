@@ -16,6 +16,9 @@ class Department(models.Model):
         managed = False
         db_table = 'department'
 
+    def __str__(self):
+        return self.dept_name + ", " + self.building + ", " + str(self.budget) 
+
 
 class Instructor(models.Model):
     id = models.IntegerField(db_column='ID', primary_key=True)  # Field name made lowercase.
