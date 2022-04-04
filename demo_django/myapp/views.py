@@ -1,7 +1,32 @@
+from urllib import response
 from django.shortcuts import render
 from django.http import HttpResponse
+from myapp.models import Department
 
 
 def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
 # Create your views here.
+
+def allDepartment(request):
+    dept_info = ""
+    for dept in Department.objects.all():
+        dept_info += f'<p>{dept}</p>'
+    html = "<html><h1>Test page.</h1><h2>All Department info:</h2>" + dept_info + "</html>"
+    
+    return HttpResponse(html)
+
+def testTemplate(request):
+    context = {"data": "ABC"}
+    return render(request, 'test.html', context)
+
+def test(request):
+    if(request.method == "GET"):
+        budget = request.GET.get("budget")
+        dept_info = ''
+        for dept in Department.objects.filter(budget__gt = budget):
+            dept_info += f'<p>{dept}</p>'
+
+        return HttpResponse(f'<html>{dept_info}</html>')
+    else:
+        return HttpResponse("Please use get response")
