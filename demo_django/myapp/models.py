@@ -30,6 +30,9 @@ class Instructor(models.Model):
         managed = False
         db_table = 'instructor'
 
+    def __str__(self):
+        return self.name + ", " + self.dept_name.dept_name + ", " + str(self.salary) 
+
 class Student(models.Model):
     id = models.IntegerField(db_column='ID', primary_key=True)  # Field name made lowercase.
     name = models.CharField(max_length=25, blank=True, null=True)
