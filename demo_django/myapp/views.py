@@ -16,6 +16,9 @@ def allDepartment(request):
     
     return HttpResponse(html)
 
+def controlPanel(request):
+    return render(request, 'controlPanel.html')
+
 def testTemplate(request):
     context = {"data": "ABC"}
     return render(request, 'test.html', context)

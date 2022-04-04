@@ -1,0 +1,7 @@
+<html>
+    {% for group in request.user.groups.all %}
+        {% if group.name == 'TEST' %}
+            <h1>USER IS IN TEST GROUP</h1>
+        {% endif %}
+    {% endfor %}
+</html>
