@@ -2,8 +2,9 @@ from http.client import HTTPResponse
 from urllib import response
 from django.shortcuts import render
 from django.http import HttpResponse
-from myapp.models import Department
+from myapp.models import Department, Instructor
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.db.models import Max, Min, Avg
 
 
 def index(request):
@@ -16,6 +17,14 @@ def allDepartment(request):
         dept_info += f'<p>{dept}</p>'
     html = "<html><h1>Test page.</h1><h2>All Department info:</h2>" + dept_info + "</html>"
     
+    return HttpResponse(html)
+
+
+def F1(requst):
+    html = ""
+    for dept in Department.objects.all():
+        res = list(Instructor.objects.filter( dept_name = dept.dept_name ).aggregate(Min('salary'), Max('salary'), Avg('salary')).values())
+        html += f'<p>{dept.dept_name} Min:{res[0]} Max:{res[1]} Avg:{res[2]}</p>'
     return HttpResponse(html)
 
 def controlPanel(request):

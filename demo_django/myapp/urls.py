@@ -9,6 +9,7 @@ urlpatterns = [
 
     # test paths
     path('allDepartment', views.allDepartment, name='allDepartment'),
+    path('F1', views.F1, name='F1'),
     path('testTemplate', views.testTemplate, name='testTemplate'),
     path('test', views.test, name='test'),
     path('onlyStudent', views.onlyStudent, name='onlyStudent'),
