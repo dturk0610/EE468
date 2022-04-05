@@ -20,7 +20,7 @@ def allDepartment(request):
     return HttpResponse(html)
 
 
-def F1(requst):
+def F2(requst):
     html = ""
     for dept in Department.objects.all():
         res = list(Instructor.objects.filter( dept_name = dept.dept_name ).aggregate(Min('salary'), Max('salary'), Avg('salary')).values())
