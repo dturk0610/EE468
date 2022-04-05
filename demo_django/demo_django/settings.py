@@ -130,3 +130,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # redirect location after login
 LOGIN_REDIRECT_URL = '/myapp/controlPanel'
+LOGIN_URL = '/myapp/accounts/login'

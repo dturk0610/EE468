@@ -1,7 +1,9 @@
+from http.client import HTTPResponse
 from urllib import response
 from django.shortcuts import render
 from django.http import HttpResponse
 from myapp.models import Department
+from django.contrib.auth.decorators import login_required, user_passes_test
 
 
 def index(request):
@@ -33,3 +35,12 @@ def test(request):
         return HttpResponse(f'<html>{dept_info}</html>')
     else:
         return HttpResponse("Please use get response")
+
+
+def is_student(user):
+    return user.groups.filter(name='Student').exists()
+
+@login_required
+@user_passes_test(is_student)
+def onlyStudent(request):
+    return HttpResponse("You are a student")
