@@ -30,10 +30,10 @@ def F1(request):
             html += f'<p>{i}</p>'
         return HttpResponse(html)
     else:
-        return HTTPResponse("Please use GET");
+        return HTTPResponse("Please use GET")
 
 
-def F2(requst):
+def F2(request):
     html = ""
     for dept in Department.objects.all():
         res = list(Instructor.objects.filter( dept_name = dept.dept_name ).aggregate(Min('salary'), Max('salary'), Avg('salary')).values())
@@ -60,7 +60,7 @@ def test(request):
 
 
 def is_student(user):
-    return user.groups.filter(name='Student').exists()
+    return user.groups.filter(name='student').exists()
 
 @login_required
 @user_passes_test(is_student)
