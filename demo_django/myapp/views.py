@@ -1,4 +1,5 @@
 from http.client import HTTPResponse
+import re
 from urllib import response
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -18,6 +19,18 @@ def allDepartment(request):
     html = "<html><h1>Test page.</h1><h2>All Department info:</h2>" + dept_info + "</html>"
     
     return HttpResponse(html)
+
+def F1(request):
+    if (request.method=='GET'):
+        html = ""
+        orderByType = request.GET.get('orderByType', 'name') #'name', 'dept_name', 'salary' should only be
+        orderByType = orderByType.split(",")
+        orderByType = list(set(orderByType) & set(['name', 'dept_name', 'salary']))
+        for i in Instructor.objects.all().order_by(*orderByType):
+            html += f'<p>{i}</p>'
+        return HttpResponse(html)
+    else:
+        return HTTPResponse("Please use GET");
 
 
 def F2(requst):
