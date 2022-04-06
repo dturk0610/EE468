@@ -2,6 +2,7 @@
 
 This will house the project for our EE468 class<br />
 David Vicaro
+Siddesh Sood
 
 
 
