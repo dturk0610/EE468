@@ -1,0 +1,13 @@
+<html>
+    {% for group in request.user.groups.all %}
+        {% if group.name == 'student' %}
+            {% include 'controlPanel/student.html' %}
+        {% endif %}
+        {% if group.name == 'prof' %}
+            {% include 'controlPanel/prof.html' %}
+        {% endif %}
+        {% if group.name == 'admin' %}
+            {% include 'controlPanel/admin.html' %}
+        {% endif %}
+    {% endfor %}
+</html>
