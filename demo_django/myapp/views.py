@@ -7,8 +7,8 @@ from myapp.models import Department, Instructor
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.db.models import Max, Min, Avg
 
-from authTools import *
-from viewsApi import *
+from myapp.authTools import *
+from myapp.viewsApi import *
 
 def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")

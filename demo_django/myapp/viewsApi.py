@@ -3,7 +3,7 @@ from myapp.models import Department, Instructor
 from django.db.models import Max, Min, Avg
 from django.contrib.auth.decorators import login_required, user_passes_test
 
-from authTools import *
+from myapp.authTools import *
 
 
 #decorations reference is_[permission] from authTools.py
