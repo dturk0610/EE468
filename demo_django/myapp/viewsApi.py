@@ -29,3 +29,9 @@ def F2(request):
         res = list(Instructor.objects.filter( dept_name = dept.dept_name ).aggregate(Min('salary'), Max('salary'), Avg('salary')).values())
         html += f'<p>{dept.dept_name} Min:{res[0]} Max:{res[1]} Avg:{res[2]}</p>'
     return HttpResponse(html)
+
+
+
+# Test
+def apiTest(request):
+    return JsonResponse({"Random Json Object": "True"})

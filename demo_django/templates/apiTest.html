@@ -1,0 +1,18 @@
+<html>
+    <script>
+    function doThing() {
+        fetch('/myapp/api/apiTest').then( async response => {
+            if(response.status == 200){
+                let j = await response.json()
+                document.getElementById("response").innerHTML = JSON.stringify(j);
+            }
+            else{
+                document.getElementById('response').innerHTML = "Status: " + response.status
+            }
+        });
+    }
+    </script>
+    <button onclick="doThing('doTheThing()')">Test</button>
+    <div id="response">
+    </div>
+</html>

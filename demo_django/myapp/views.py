@@ -9,6 +9,7 @@ from django.db.models import Max, Min, Avg
 
 from myapp.authTools import *
 from myapp.viewsApi import *
+from myapp.viewsTest import *
 
 def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
@@ -52,3 +53,4 @@ def onlyStudent(request):
 @user_passes_test(is_student)
 def apiStudent(request):
     return JsonResponse({"A": "hi"})
+
