@@ -31,7 +31,3 @@ def F2(request):
     return HttpResponse(html)
 
 
-
-# Test
-def apiTest(request):
-    return JsonResponse({"Random Json Object": "True"})
