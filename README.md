@@ -1,10 +1,17 @@
 # EE468
 
-This will house the project for our EE468 class<br />
+This will house the project for our EE468 class\
+Made By 
+
 David Vicaro
+
 Siddesh Sood
 
+Morgan Busch
 
+Dakota Turk
+
+---
 
 ### Creating accounts
 
