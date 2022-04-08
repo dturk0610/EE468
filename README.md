@@ -1,19 +1,16 @@
 # EE468
 
 This will house the project for our EE468 class\
-Made By 
+Made By:
 
-David Vicaro
-
-Siddesh Sood
-
-Morgan Busch
-
-Dakota Turk
+- David Vicaro
+- Siddesh Sood
+- Morgan Busch
+- Dakota Turk
 
 ---
 
-### Creating accounts
+## Creating accounts
 
 First, create an admin account by running:
 
@@ -22,9 +19,10 @@ First, create an admin account by running:
 Then, run the server and login to [127.0.0.1:8000/admin](127.0.0.1:8000/admin)
 
 Use the add buttons to add the following groups:
-* `admin`
-* `prof`
-* `student`
+
+- `admin`
+- `prof`
+- `student`
 
 As of April 5, I don't think that permissions need to be added to any of these groups. The names are the important part.
 
