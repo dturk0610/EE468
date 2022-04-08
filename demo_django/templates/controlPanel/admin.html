@@ -1,8 +1,16 @@
 <h1>ADMIN SECTION</h1>
 <body>
     <div>
-        <button type="button" onclick="listAllProf()">List all professors</button>
-        <div id="resDiv">
+        <div>
+            <button type="button" onclick="listAllProf()">List all professors</button>
+            <input type="checkbox" id="orderName" value="name">
+            <label for="orderName"> Order by name </label>
+            <input type="checkbox" id="orderDept" value="dept_name">
+            <label for="orderDept"> Order by department</label>
+            <input type="checkbox" id="orderSalary" value="salary">
+            <label for="orderSalary"> Order by salary</label>
+        </div>
+        <div id="resDiv" class="scrollingTable">
 
         </div>
     </div>

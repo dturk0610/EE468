@@ -8,7 +8,9 @@
         {% endif %}
         {% if group.name == 'admin' %}
             {% load static %}
-    <script src="{% static 'scripts/admin.js' %}"></script>
+            <link rel="stylesheet" href="{% static 'css/scrollingTable.css' %}">
+            <script src="{% static 'scripts/admin.js' %}"></script>
+            <script src="{% static 'scripts/table.js' %}"></script>
             {% include 'controlPanel/admin.html' %}
         {% endif %}
     {% endfor %}
