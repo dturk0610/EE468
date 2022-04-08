@@ -7,6 +7,8 @@
             {% include 'controlPanel/prof.html' %}
         {% endif %}
         {% if group.name == 'admin' %}
+            {% load static %}
+    <script src="{% static 'scripts/admin.js' %}"></script>
             {% include 'controlPanel/admin.html' %}
         {% endif %}
     {% endfor %}
