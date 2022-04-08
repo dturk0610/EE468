@@ -10,7 +10,7 @@ from myapp.authTools import *
 
 #decorations reference is_[permission] from authTools.py
 @login_required
-@user_passes_test(is_student)
+@user_passes_test(is_admin)
 def F1(request):
     if (request.method=='GET'):
         html = ""
@@ -25,7 +25,7 @@ def F1(request):
         return HttpResponse("Please use GET")
 
 @login_required
-@user_passes_test(is_student)
+@user_passes_test(is_admin)
 def F2(request):
     html = ""
     d = {}
