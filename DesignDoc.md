@@ -30,3 +30,6 @@ All functionality is organized via URL paths:
     * `F1` through `F6` - API functions
 
 
+## API
+
+# Todo: function calls + parameters for each api

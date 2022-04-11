@@ -7,6 +7,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('controlPanel', views.controlPanel, name='controlPanel'),
+    # path('login', )
     
     # api paths
     path('api/F1', views.F1, name='F1'),
