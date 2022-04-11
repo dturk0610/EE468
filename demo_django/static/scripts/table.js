@@ -24,23 +24,22 @@ class Table{
         res += "<caption>" + tableName + "</caption>\n";
         res += "<thead>\n<tr>\n";
         var objs = JSON.parse( json );
-        var columns = Object.keys(objs[0]['fields']);
+        var temp = Object.keys(objs);
+        var columns = Object.keys(objs[temp[0]]);
         for ( var i = 0; i < columns.length; i++ ){
             res += "<th><div><div>"+columns[i]+"</div><div>"+columns[i]+"</div></div></th>\n";
         }
         res += "<th class=\"scrollbarhead\"/>\n";
         res += "</tr>\n</thead>\n";
         res += "<tbody>\n";
-        objs.forEach( currObj => {
-            var fields = currObj['fields']; // HERE IS THE REAL DATA WE ARE LOOKING FOR
-            var keys = Object.keys( fields );
-            res += "<tr>"
-            for (var i = 0; i < keys.length; i++ ){
-                res += "<td>" + fields[keys[i]] + "</td>";
+        for (var i = 0; i < temp.length; i++){
+            var curr = objs[temp[i]];
+            res += "<tr>";
+            for (var j = 0; j < columns.length; j++){
+                res += "<td>" + curr[columns[j]] + "</td>";
             }
             res+="</tr>\n"
-
-        });
+        }
         res += "</tbody>\n";
         res += "</table>\n</div>\n</div>";
         return res;
