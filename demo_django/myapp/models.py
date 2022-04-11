@@ -216,6 +216,8 @@ class Takes(models.Model):
         managed = False
         db_table = 'takes'
 
+    #def __str__(self):
+        #return self.studid + ", " + self.course.course_id + ", " + str(self.sec)
 
 class Teaches(models.Model):
     instid = models.ForeignKey(Instructor, models.DO_NOTHING, db_column='ID', blank=True, null=True)  # Field name made lowercase.
