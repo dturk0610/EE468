@@ -9,7 +9,7 @@ function listAllProf(){
     if ( deptCheck.checked ) addToGET += deptCheck.value + ",";
     if ( salCheck.checked ) addToGET += salCheck.value;
 
-    const url = '/myapp/api/F1?orderByType=' + addToGET;
+    const url = '/api/F1?orderByType=' + addToGET;
     Http.open("GET", url);
     Http.send();
 
@@ -25,7 +25,7 @@ function listAllProf(){
 
 function listAllDeptInfo(){
     const Http = new XMLHttpRequest();
-    const url = '/myapp/api/F2';
+    const url = '/api/F2';
     Http.open("GET", url);
     Http.send();
 
