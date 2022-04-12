@@ -2,7 +2,7 @@
 
 ## Database Architecture
 
-![database_diagram](images/database_diagram.png)
+![database_diagram](images/database_diagram_model.png)
 
 ## Software
 
