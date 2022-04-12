@@ -18,18 +18,38 @@ Accounts are handled through the built-in django account manager accessible at `
 
 Any user attempting to access a resource that they do not have access to will be redirected to a login page. 
 
+## File Structure
+
+The relevant files in the project structure are as follows:
+
+| Path | Purpose |
+|:---- |:------- |
+| `demo_django` | Default django project containing configuration files | 
+| `demo_django/settings.py` | Configuration file |
+| `demo_django/urls.py` | top-level urls confiruration |
+
+# TODO: finish
+
+
 ## URL Paths
 All functionality is organized via URL paths:
-
 * `myapp/`
-  * `login`             - `myapp/accounts/login` redirect
-  * `controlPanel`      - Main page to navigate functionality
+  * `login`
+  * `controlPanel`
   * `accounts/`
     * `login`
     * `logout`
   * `api/`
-    * `F1` through `F6` - API functions
+    * `F1` through `F6`
 
+Redirects:
+
+* `myapp/` -> `myapp/controlPanel`
+* `myapp/login` -> `accounts/login`
+
+
+## ControlPanel
+This is the main hub of this application. First, if the user is not logged in, they will be redirected to a login page. Once the user has logged in, they will be shown all functions that they are permitted to use. This is done using the django template language. Internally, there are `admin.html`, `prof.html`, and `student.html` pages that hold the corresponding available functions. Using simple template language if-statements, we can determine which groups the user belongs to and include each page into the `controlPanel.html` page using template language include statements. 
 
 ## API
 This section details all API calls used in each required application feature. This API  is http-request based, with all data returned in JSON format. Each API call description consists of:
@@ -40,6 +60,8 @@ This section details all API calls used in each required application feature. Th
 * Parameters and expected values table
 * Example call
 * Example response
+
+While each API call will be called from the controlPanel page, which checks for the user's group, each API call also verifies the user's group before returning any data.
 
 ### F1 
 
