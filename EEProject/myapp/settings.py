@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'demo_django.urls'
+ROOT_URLCONF = 'myapp.urls'
 
 TEMPLATES = [
     {
@@ -69,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'demo_django.wsgi.application'
+WSGI_APPLICATION = 'myapp.wsgi.application'
 
 
 # Database
@@ -134,5 +134,5 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # redirect location after login
-LOGIN_REDIRECT_URL = '/myapp/controlPanel'
-LOGIN_URL = '/myapp/accounts/login'
+LOGIN_REDIRECT_URL = '/controlPanel'
+LOGIN_URL = '/accounts/login'

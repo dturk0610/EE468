@@ -1,5 +1,5 @@
 from django.urls import path, include
-
+from django.contrib import admin
 from . import views
 
 urlpatterns = [
@@ -8,6 +8,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('controlPanel', views.controlPanel, name='controlPanel'),
     path('login/', views.loginRedirect, name='loginRedirect'),
+    path('admin/', admin.site.urls),
     
     # api paths
     path('api/F1', views.F1, name='F1'),

@@ -28,10 +28,10 @@ def controlPanel(request):
 
 
 def loginRedirect(request):
-    return redirect('/myapp/accounts/login')
+    return redirect('/accounts/login')
 
 def controlPanelRedirect(request):
-    return redirect('/myapp/controlPanel')
+    return redirect('/controlPanel')
 
 def testTemplate(request):
     context = {"data": "ABC"}
