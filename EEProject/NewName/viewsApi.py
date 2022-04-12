@@ -1,11 +1,11 @@
 from django.http import HttpResponse, JsonResponse
 from setuptools import find_packages
-from myapp.models import Department, Instructor, Teaches, Takes
+from NewName.models import Department, Instructor, Teaches, Takes
 from django.db.models import Max, Min, Avg
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core import serializers
 import json
-from myapp.authTools import *
+from NewName.authTools import *
 import logging
 
 #decorations reference is_[permission] from authTools.py

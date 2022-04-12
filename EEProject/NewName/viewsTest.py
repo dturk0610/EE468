@@ -1,5 +1,5 @@
 from django.http import HttpResponse, JsonResponse
-from myapp.models import Department, Instructor
+from NewName.models import Department, Instructor
 from django.db.models import Max, Min, Avg
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import render
