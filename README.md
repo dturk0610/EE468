@@ -27,3 +27,7 @@ Use the add buttons to add the following groups:
 As of April 5, I don't think that permissions need to be added to any of these groups. The names are the important part.
 
 Users can now be added and assigned to each group.
+
+## [Deign Documentation](DesignDoc.md)
+
+## [User Documentation](UserDoc.md)
