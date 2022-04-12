@@ -4,10 +4,10 @@ from . import views
 
 urlpatterns = [
     # front facing
-    path('', views.index, name='index'),
+    path('', views.controlPanelRedirect, name='controlPanelRedirect'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('controlPanel', views.controlPanel, name='controlPanel'),
-    # path('login', )
+    path('login/', views.loginRedirect, name='loginRedirect'),
     
     # api paths
     path('api/F1', views.F1, name='F1'),

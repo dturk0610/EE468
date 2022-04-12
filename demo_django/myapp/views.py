@@ -1,7 +1,7 @@
 from http.client import HTTPResponse
 import re
 from urllib import response
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from myapp.models import Department, Instructor
 from django.contrib.auth.decorators import login_required, user_passes_test
@@ -25,6 +25,13 @@ def allDepartment(request):
 
 def controlPanel(request):
     return render(request, 'controlPanel/controlPanel.html')
+
+
+def loginRedirect(request):
+    return redirect('/myapp/accounts/login')
+
+def controlPanelRedirect(request):
+    return redirect('/myapp/controlPanel')
 
 def testTemplate(request):
     context = {"data": "ABC"}

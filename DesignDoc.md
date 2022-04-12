@@ -22,7 +22,8 @@ Any user attempting to access a resource that they do not have access to will be
 All functionality is organized via URL paths:
 
 * `myapp/`
-  * `controlPanel` - Main page to navigate functionality
+  * `login`             - `myapp/accounts/login` redirect
+  * `controlPanel`      - Main page to navigate functionality
   * `accounts/`
     * `login`
     * `logout`
@@ -126,3 +127,5 @@ Example response:
 ```
 
 # Todo: function calls + parameters for each api
+
+
