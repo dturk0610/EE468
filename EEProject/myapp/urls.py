@@ -14,6 +14,7 @@ urlpatterns = [
     path('api/F1', views.F1, name='F1'),
     path('api/F2', views.F2, name='F2'),
     path('api/F3', views.F3, name='F3'),
+    path('api/F4', views.F4, name='F4'),
     path('api/apiTest', views.apiTest, name='apiTest'),
 
     # test paths

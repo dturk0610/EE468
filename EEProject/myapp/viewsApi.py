@@ -13,20 +13,19 @@ import logging
 @user_passes_test(is_admin)
 def F1(request):
     logging.basicConfig(level=logging.NOTSET)
-    if (request.method=='GET'):
-        html = ""
-        orderByType = request.GET.get('orderByType', 'name') #'name', 'dept_name', 'salary' should only be
-        orderByType = orderByType.split(",")
-        orderByType = list(set(orderByType) & set(['name', 'dept_name', 'salary']))
-        insts = {}
-        logging.info( Instructor.objects.order_by(*orderByType) )
-        counter = 0;
-        for i in Instructor.objects.order_by(*orderByType):
-            insts[counter] = {"name":i.name, "dept_name":i.dept_name.dept_name, "salary":i.salary}
-            counter = counter + 1
-        return JsonResponse(insts)
-    else:
-        return HttpResponse("Please use GET")
+    if (request.method!='GET'): return HttpResponse("Please use GET")
+
+    html = ""
+    orderByType = request.GET.get('orderByType', 'name') #'name', 'dept_name', 'salary' should only be
+    orderByType = orderByType.split(",")
+    orderByType = list(set(orderByType) & set(['name', 'dept_name', 'salary']))
+    insts = {}
+    logging.info( Instructor.objects.order_by(*orderByType) )
+    counter = 0;
+    for i in Instructor.objects.order_by(*orderByType):
+        insts[counter] = {"name":i.name, "dept_name":i.dept_name.dept_name, "salary":i.salary}
+        counter = counter + 1
+    return JsonResponse(insts)
 
 @login_required
 @user_passes_test(is_admin)
@@ -56,3 +55,23 @@ def F3(request):
             logging.info(teaches)
         logging.info(count)
     return HttpResponse(' ')
+
+
+def F4(request):
+
+    if (request.method!='GET'): return HttpResponse('CALL AS A GET')
+
+    logging.basicConfig(level=logging.NOTSET)
+    profID = request.GET.get('prof', 0000)
+    sem = request.GET.get('sem', 1)
+    year = request.GET.get('year', 2020)
+    counter = 0
+    jsonRes = {}
+    for teaches in Teaches.objects.filter(id=profID, semester=sem, year=year):
+        count = 0
+        for takes in Takes.objects.filter(sec_id=teaches.sec_id):
+            if ( takes.course_id != teaches.course_id ): continue
+            count = count + 1
+        jsonRes[counter] = { "course":teaches.course_id, "sec":teaches.sec_id, "semester":teaches.semester_id, "year":teaches.year_id, "numOfStudents":count }
+    
+    return JsonResponse(jsonRes)

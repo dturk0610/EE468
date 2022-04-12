@@ -5,6 +5,7 @@
 #   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
+from email.policy import default
 from django.db import models
 
 
@@ -97,6 +98,9 @@ class Classroom(models.Model):
         db_table = 'classroom'
         unique_together = (('building', 'room_number'),)
 
+    def __str__(self):
+        return self.building + ", " + self.room_number + ", " + str(self.capacity)
+
 
 class Course(models.Model):
     course_id = models.CharField(primary_key=True, max_length=25)
@@ -107,6 +111,9 @@ class Course(models.Model):
     class Meta:
         managed = False
         db_table = 'course'
+    
+    def __str__(self):
+        return self.course_id + ", " + self.title + ", " + self.dept_name + ", " + str(self.credits)
 
 
 class Department(models.Model):
@@ -192,6 +199,9 @@ class Section(models.Model):
         db_table = 'section'
         unique_together = (('course', 'sec_id', 'semester', 'year'),)
 
+    def __str__(self):
+        return self.course + ", " + str(self.sec_id) + ", " + self.semester + ", " + str(self.year) + ", " + self.building + ", " + self.room_number + ", " + self.time_slot
+
 
 class Student(models.Model):
     id = models.IntegerField(db_column='ID', primary_key=True)  # Field name made lowercase.
@@ -202,6 +212,9 @@ class Student(models.Model):
     class Meta:
         managed = False
         db_table = 'student'
+
+    def __str__(self):
+        return self.name + ", " + str(self.id) + ", " + self.dept_name.dept_name + ", " + str(self.tot_cred)
 
 
 class Takes(models.Model):
@@ -216,8 +229,8 @@ class Takes(models.Model):
         managed = False
         db_table = 'takes'
 
-    #def __str__(self):
-        #return self.studid + ", " + self.course.course_id + ", " + str(self.sec)
+    def __str__(self):
+        return f"{self.studid_id}, {self.course_id}, {self.sec_id}, {self.semester_id}, {self.year_id}, {self.grade}"
 
 class Teaches(models.Model):
     instid = models.ForeignKey(Instructor, models.DO_NOTHING, db_column='ID', blank=True, null=True)  # Field name made lowercase.
@@ -230,6 +243,9 @@ class Teaches(models.Model):
         managed = False
         db_table = 'teaches'
 
+    def __str__(self):
+        return str(self.instid) + ", " + str(self.course_id) + ", " + str(self.sec_id) + ", " + str(self.semester_id)
+
 
 class TimeSlot(models.Model):
     time_slot_id = models.IntegerField(primary_key=True)
@@ -240,3 +256,6 @@ class TimeSlot(models.Model):
     class Meta:
         managed = False
         db_table = 'time_slot'
+
+    def __str__(self):
+        return str(self.time_slot_id) + ", " + str(self.day) + ", " + str(self.start_time) + ", " + str(self.end_time)
