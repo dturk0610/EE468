@@ -20,13 +20,37 @@ Any user attempting to access a resource that they do not have access to will be
 
 ## File Structure
 
-The relevant files in the project structure are as follows:
+The relevant files in the project structure are as follows (in the root `EEProject` directory):
 
 | Path | Purpose |
 |:---- |:------- |
-| `demo_django` | Default django project containing configuration files | 
-| `demo_django/settings.py` | Configuration file |
-| `demo_django/urls.py` | top-level urls confiruration |
+| `myapp/` | Holds all python code + config | 
+| `myapp/admin.py` | Model registration for django admin panel |
+| `myapp/apps.py` | Basic name configuration |
+| `myapp/authTools.py` | Functions to check user permission group, used in views*.py files |
+| `myapp/models.py` | Model definitions generated from mysql database |
+| `myapp/settings.py` | Main django config file |
+| `myapp/tests.py` | Django tests |
+| `myapp/urls.py` | URL path definitions |
+| `myapp/views.py` | Holds front-facing and redirect pages |
+| `myapp/viewsApi.py` | Holds all API-related functions |
+| `myapp/viewsTest.py` | Pages meant for testing, should not be included in prod |
+| `myapp/wsgi.py` | Default WSGI config |
+| `static/` | Static directory |
+| `static/css/` | CSS files |
+| `static/scripts` | JS files |
+| `templates/` | Templates used by views*.py files |
+| `templates/controlPanel/` | Templates related to the main Control Panel |
+| `templates/controlPanel/admin.html` | Page included by `controlPanel.html` for admin functions |
+| `templates/controlPanel/controlPanel.html` | Main control panel page |
+| `templates/controlPanel/prof.html` | Page included by `controlPanel.html` for professor functions |
+| `templates/controlPanel/student.html` | Page included by `controlPanel.html` for student functions |
+| `templates/registration/` | Account-related templates |
+| `templates/registration/login.html` | Login template |
+| `templates/apiTest.html` | Test page for API |
+| `templates/test.html` | General test page |
+| `manage.py` | Django server manager utility |
+| `university.sql` | Mysql database export |
 
 # TODO: finish
 
