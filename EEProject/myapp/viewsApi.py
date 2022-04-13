@@ -62,9 +62,9 @@ def F4(request):
     if (request.method!='GET'): return HttpResponse('CALL AS A GET')
 
     logging.basicConfig(level=logging.NOTSET)
-    profID = request.GET.get('prof', 0000)
-    sem = request.GET.get('sem', 1)
-    year = request.GET.get('year', 2020)
+    profID = request.GET.get('prof', 0)
+    sem = request.GET.get('sem', 0)
+    year = request.GET.get('year', 1996)
     counter = 0
     jsonRes = {}
     for teaches in Teaches.objects.filter(id=profID, semester=sem, year=year):
@@ -73,5 +73,5 @@ def F4(request):
             if ( takes.course_id != teaches.course_id ): continue
             count = count + 1
         jsonRes[counter] = { "course":teaches.course_id, "sec":teaches.sec_id, "semester":teaches.semester_id, "year":teaches.year_id, "numOfStudents":count }
-    
+        counter = counter + 1
     return JsonResponse(jsonRes)
