@@ -7,6 +7,7 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from email.policy import default
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Advisor(models.Model):
@@ -163,6 +164,7 @@ class DjangoSession(models.Model):
 
 
 class Instructor(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     id = models.IntegerField(db_column='ID', primary_key=True)  # Field name made lowercase.
     name = models.CharField(max_length=25, blank=True, null=True)
     dept_name = models.ForeignKey(Department, models.DO_NOTHING, db_column='dept_name', blank=True, null=True)
@@ -204,6 +206,7 @@ class Section(models.Model):
 
 
 class Student(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     id = models.IntegerField(db_column='ID', primary_key=True)  # Field name made lowercase.
     name = models.CharField(max_length=25, blank=True, null=True)
     dept_name = models.ForeignKey(Department, models.DO_NOTHING, db_column='dept_name', blank=True, null=True)
