@@ -1,6 +1,6 @@
 from django.http import HttpResponse, JsonResponse
 from setuptools import find_packages
-from myapp.models import Department, Instructor, Teaches, Takes
+from myapp.models import Department, Instructor, Teaches, Takes, Student
 from django.db.models import Max, Min, Avg
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core import serializers
@@ -78,3 +78,64 @@ def F4(request):
         jsonRes[counter] = { "course":teaches.course_id, "sec":teaches.sec_id, "semester":teaches.semester_id, "year":teaches.year_id, "numOfStudents":count }
         counter = counter + 1
     return JsonResponse(jsonRes)
+
+@login_required
+@user_passes_test(is_prof)
+def F5(request):
+    if (request.method!='GET'): return HttpResponse('CALL AS A GET')
+    logging.basicConfig(level=logging.NOTSET)
+    currUser = request.user
+    listInsts = Instructor.objects.filter(user_id=currUser.id)
+    if ( len(listInsts) == 0): raise("No instructor associated with use, how did you get here?")
+    currInst = listInsts[0]
+    profID = currInst.id
+    courseID = request.GET.get('courseID')
+    secID = request.GET.get('secID')
+    sem = request.GET.get('sem')
+    year = request.GET.get('year')
+    counter = 0
+    jsonRes = {}
+    for stud in Takes.objects.filter(sec_id = secID, semester=sem, year=year):
+        if (stud.course_id != courseID): continue;
+        student = Student.objects.get(pk=stud.id)
+        jsonRes[counter] = { 'id':student.id, 'name':student.name }
+        counter = counter + 1
+    return JsonResponse(jsonRes)
+
+@login_required
+@user_passes_test(is_prof)
+def getAllClasses(request):
+    if (request.method!='GET'): return HttpResponse('CALL AS A GET')
+    logging.basicConfig(level=logging.NOTSET)
+    currUser = request.user
+    listInsts = Instructor.objects.filter(user_id=currUser.id)
+    if ( len(listInsts) == 0): raise("No instructor associated with use, how did you get here?")
+    currInst = listInsts[0]
+    profID = currInst.id
+    counter = 0
+    jsonRes = {}
+    for course in Teaches.objects.filter(id=profID).only('course_id').distinct():
+        jsonRes[counter] = { "courseID":course.course_id }
+        counter = counter + 1
+    return JsonResponse(jsonRes)
+
+
+@login_required
+@user_passes_test(is_prof)
+def getAllSections(request):
+    if (request.method!='GET'): return HttpResponse('CALL AS A GET')
+    logging.basicConfig(level=logging.NOTSET)
+    currUser = request.user
+    listInsts = Instructor.objects.filter(user_id=currUser.id)
+    if ( len(listInsts) == 0): raise("No instructor associated with use, how did you get here?")
+    currInst = listInsts[0]
+    profID = currInst.id
+    courseID = request.GET.get('courseID')
+    counter = 0
+    jsonRes = {}
+    for section in Teaches.objects.filter(id=profID):
+        if (section.course_id != courseID): continue;
+        jsonRes[counter] = { "secID":section.sec_id, "sem":section.semester_id, "year":section.year_id }
+        counter = counter + 1
+    return JsonResponse(jsonRes)
+

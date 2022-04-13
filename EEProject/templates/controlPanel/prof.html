@@ -1,5 +1,5 @@
 <h1>PROFESSOR SECTION</h1>
-<body>
+<body onload="getAllClasses()">
     <div>
         <div>
             <button type="button" onclick="listAllSectionInfo()">List each section info</button>
@@ -19,5 +19,13 @@
             </select>
         </div>
         <div id="allSecInfoDiv"></div>
+
+        <div>
+          <label for="courseList">Select course: </label>
+          <select name="courseList" id="courseDropDown" onchange="updateSections()"></select>
+
+          <label for="sectionList">Select section: </label>
+          <select name="sectionList" id="sectionDropDown"></select>
+        </div>
     </div>
 </body>
