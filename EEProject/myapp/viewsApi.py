@@ -56,13 +56,16 @@ def F3(request):
         logging.info(count)
     return HttpResponse(' ')
 
-
+@login_required
+@user_passes_test(is_prof)
 def F4(request):
-
     if (request.method!='GET'): return HttpResponse('CALL AS A GET')
-
     logging.basicConfig(level=logging.NOTSET)
-    profID = request.GET.get('prof', 0)
+    currUser = request.user
+    listInsts=Instructor.objects.filter(user_id=currUser.id)
+    if ( len(listInsts) == 0): raise("No instructor associated with use, how did you get here?")
+    currInst=listInsts[0]
+    profID = currInst.id
     sem = request.GET.get('sem', 0)
     year = request.GET.get('year', 1996)
     counter = 0
