@@ -72,7 +72,7 @@ def F4(request):
     jsonRes = {}
     for teaches in Teaches.objects.filter(id=profID, semester=sem, year=year):
         count = 0
-        for takes in Takes.objects.filter(sec_id=teaches.sec_id):
+        for takes in Takes.objects.filter(sec_id=teaches.sec_id, semester=sem, year=year):
             if ( takes.course_id != teaches.course_id ): continue
             count = count + 1
         jsonRes[counter] = { "course":teaches.course_id, "sec":teaches.sec_id, "semester":teaches.semester_id, "year":teaches.year_id, "numOfStudents":count }
