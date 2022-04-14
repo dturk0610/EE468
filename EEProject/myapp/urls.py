@@ -18,6 +18,7 @@ urlpatterns = [
     path('api/F5', views.F5, name='F5'),
     path('api/getAllClasses', views.getAllClasses, name='getAllClasses'),
     path('api/getAllSections', views.getAllSections, name='getAllSections'),
+    path('api/getAllDepts', views.getAllDepts, name='getAllDepts'),
     path('api/apiTest', views.apiTest, name='apiTest'),
 
     # test paths

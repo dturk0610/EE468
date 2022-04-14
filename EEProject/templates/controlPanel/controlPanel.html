@@ -1,6 +1,10 @@
 <html>
     {% for group in request.user.groups.all %}
         {% if group.name == 'student' %}
+            {% load static %}
+            <link rel="stylesheet" href="{% static 'css/scrollingTable.css' %}">
+            <script src="{% static 'scripts/student.js' %}"></script>
+            <script src="{% static 'scripts/table.js' %}"></script
             {% include 'controlPanel/student.html' %}
         {% endif %}
         {% if group.name == 'prof' %}

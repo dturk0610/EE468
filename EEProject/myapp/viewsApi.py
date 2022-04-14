@@ -1,6 +1,6 @@
 from django.http import HttpResponse, JsonResponse
 from setuptools import find_packages
-from myapp.models import Department, Instructor, Teaches, Takes, Student
+from myapp.models import Department, Instructor, Teaches, Takes, Student, Section
 from django.db.models import Max, Min, Avg
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core import serializers
@@ -139,3 +139,13 @@ def getAllSections(request):
         counter = counter + 1
     return JsonResponse(jsonRes)
 
+@login_required
+@user_passes_test(is_student)
+def getAllDepts(request):
+    if (request.method!='GET'): return HttpResponse('CALL AS A GET')
+    counter = 0
+    jsonResp = {}
+    for dept in Department.objects.order_by('dept_name'):
+        jsonResp[counter] = { 'dept':dept.dept_name }
+        counter = counter + 1
+    return JsonResponse(jsonResp)
