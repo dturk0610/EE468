@@ -175,5 +175,60 @@ Example response:
     } 
   }
 ```
+### F3
+Returns a table of professor name, dept, and total number of students taught by the professor in a given semester
+
+Permission group: admin
+
+Location: `myapp/api/F3`
+
+| Parameters | Values |
+|:----------:|:-------:|
+| None | None |
+
+Example call:
+
+Example response:
+
+### F4
+Returns the list of course sections and the number of students enrolled in each section that the professor taught in a given semester
+
+Permission group: Professors
+
+Location: `myapp/api/F4`
+
+| Parameters | Values |
+|:----------:|:-------:|
+| None | None |
+
+Example call:
+
+Example response:
+
+### F5
+Returns he list of students enrolled in a course section taught by the professor in a given semester
+
+Permission group: Professors
+
+Location: `myapp/api/F5`
+
+| Parameters | Values |
+|:----------:|:-------:|
+| None | None |
+
+### F6
+Returns the list of course sections offered by department in a given semester and year.
+
+Permission group: Students
+
+Location: `myapp/api/F6`
+
+| Parameters | Values |
+|:----------:|:-------:|
+| None | None |
+
+Example call:
+
+Example response:
 
 ## Todo: function calls + parameters for each api
