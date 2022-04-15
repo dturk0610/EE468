@@ -186,14 +186,13 @@ class Prereq(models.Model):
         db_table = 'prereq'
         unique_together = (('course', 'prereq'),)
 
-
 class Section(models.Model):
-    course = models.ForeignKey(Course, models.DO_NOTHING, related_name="sec_course")
+    course = models.ForeignKey('Course', models.DO_NOTHING)
     sec_id = models.IntegerField()
     semester = models.CharField(max_length=25)
     year = models.TextField()  # This field type is a guess.
-    building = models.ForeignKey(Classroom, models.DO_NOTHING, db_column='building', blank=True, null=True, related_name="build")
-    room_number = models.ForeignKey(Classroom, models.DO_NOTHING, db_column='room_number', blank=True, null=True, related_name="room")
+    building = models.ForeignKey('Classroom', models.DO_NOTHING, db_column='building', blank=True, null=True,related_name="sec_build")
+    room_number = models.ForeignKey('Classroom', models.DO_NOTHING, db_column='room_number', blank=True, null=True)
     time_slot = models.ForeignKey('TimeSlot', models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
@@ -202,7 +201,7 @@ class Section(models.Model):
         unique_together = (('course', 'sec_id', 'semester', 'year'),)
 
     def __str__(self):
-        return self.course + ", " + str(self.sec_id) + ", " + self.semester + ", " + str(self.year) + ", " + self.building + ", " + self.room_number + ", " + self.time_slot
+        return f"courseID:{self.course_id}, secId:{self.sec_id}, semester:{self.semester}, year:{self.year}"
 
 
 class Student(models.Model):

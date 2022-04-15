@@ -42,17 +42,18 @@ function getAllClasses(){
         var response = Http.response;
         var jsonResp = JSON.parse(response);
         var keys = Object.keys(jsonResp);
+
+        var L = courseDropDown.options.length - 1;
+        for( var i = L; i >= 0; i--) {
+           courseDropDown.remove(i);
+        }
+
         if (keys.length <= 0) { 
             var opt = document.createElement('option');
             opt.value = null;
             opt.innerHTML = "You have no classes registered in the teaches table!";
             courseDropDown.appendChild(opt);
             return; 
-        }
-
-        var L = courseDropDown.options.length - 1;
-        for( var i = L; i >= 0; i--) {
-           courseDropDown.remove(i);
         }
 
         for (var i = 0; i < keys.length; i++){
@@ -71,7 +72,7 @@ function updateSections(){
     var courseDropDown = document.getElementById("courseDropDown");
     var secDropDown = document.getElementById("sectionDropDown");
     
-    const url = '/api/getAllSections?courseID=' + courseDropDown.value;
+    const url = '/api/getAllInstSections?courseID=' + courseDropDown.value;
     Http.open("GET", url);
     Http.send();
 
@@ -80,17 +81,18 @@ function updateSections(){
         var response = Http.response;
         var jsonResp = JSON.parse(response);
         var keys = Object.keys(jsonResp);
+
+        var L = secDropDown.options.length - 1;
+        for( var i = L; i >= 0; i--) {
+           secDropDown.remove(i);
+        }
+
         if (keys.length <= 0) { 
             var opt = document.createElement('option');
             opt.value = null;
             opt.innerHTML = "No sections available";
             secDropDown.appendChild(opt);
             return; 
-        }
-
-        var L = secDropDown.options.length - 1;
-        for( var i = L; i >= 0; i--) {
-           secDropDown.remove(i);
         }
 
         for (var i = 0; i < keys.length; i++){

@@ -3,12 +3,27 @@
     <div>
         <div>
             <label for="dept">Department: </label>
-            <select name="dept" id="deptDropDown"></select>
+            <select name="dept" id="deptDropDown" onchange="getAllClasses(), listAllSectionInfo()"></select>
+
+            <label for="classList">Select class: </label>
+            <select name="classList" id="classDropDown" onchange="listAllSectionInfo()"></select>
             
-            <label for="sectionList">Select section: </label>
-            <select name="sectionList" id="sectionDropDown" onchange=""></select>
-          </div>
-          <div id="allStudsInSecDiv"></div>
+            <label for="sem">Semester: </label>
+            <select name="sem" id="semDropDown" onchange="listAllSectionInfo()">
+                <option value=1>Fall</option>
+                <option value=2>Spring</option>
+                <option value=3>Summer</option>
+                <option value=4>Winter</option>
+            </select>
+            <label for="yr">Year: </label>
+            <select name="yr" id="yrDropDown" onchange="listAllSectionInfo()">
+                <option value=2019>2019</option>
+                <option value=2020>2020</option>
+                <option value=2021>2021</option>
+                <option value=2022>2022</option>
+            </select>
+            </div>
+            <div id="allStudsInSecDiv"></div>
         <div></div>
         <div id="allCourseInDeptDiv"></div>
     </div>

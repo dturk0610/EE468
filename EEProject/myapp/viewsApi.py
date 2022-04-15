@@ -1,6 +1,6 @@
 from django.http import HttpResponse, JsonResponse
 from setuptools import find_packages
-from myapp.models import Department, Instructor, Teaches, Takes, Student, Section
+from myapp.models import Department, Instructor, Teaches, Takes, Student, Section, Course
 from django.db.models import Max, Min, Avg
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core import serializers
@@ -103,6 +103,21 @@ def F5(request):
     return JsonResponse(jsonRes)
 
 @login_required
+@user_passes_test(is_student)
+def F6(request):
+    if (request.method!='GET'): return HttpResponse('CALL AS A GET')
+    logging.basicConfig(level=logging.NOTSET)
+    courseID = request.GET.get('courseID')
+    sem = request.GET.get('sem')
+    year = request.GET.get('year')
+    counter = 0
+    jsonResp = {}
+    for sec in Section.objects.filter(course_id = courseID, semester = sem, year = year):
+        jsonResp[counter] = { 'course':courseID, 'sec':sec.sec_id, 'sem':sem, 'year':year }
+        counter = counter + 1
+    return JsonResponse(jsonResp)
+
+@login_required
 @user_passes_test(is_prof)
 def getAllClasses(request):
     if (request.method!='GET'): return HttpResponse('CALL AS A GET')
@@ -122,12 +137,12 @@ def getAllClasses(request):
 
 @login_required
 @user_passes_test(is_prof)
-def getAllSections(request):
+def getAllInstSections(request):
     if (request.method!='GET'): return HttpResponse('CALL AS A GET')
     logging.basicConfig(level=logging.NOTSET)
     currUser = request.user
     listInsts = Instructor.objects.filter(user_id=currUser.id)
-    if ( len(listInsts) == 0): raise("No instructor associated with use, how did you get here?")
+    if ( len(listInsts) == 0): raise("No instructor associated with user, how did you get here?")
     currInst = listInsts[0]
     profID = currInst.id
     courseID = request.GET.get('courseID')
@@ -147,5 +162,17 @@ def getAllDepts(request):
     jsonResp = {}
     for dept in Department.objects.order_by('dept_name'):
         jsonResp[counter] = { 'dept':dept.dept_name }
+        counter = counter + 1
+    return JsonResponse(jsonResp)
+
+@login_required
+@user_passes_test(is_student)
+def getAllClassesForDept(request):
+    if (request.method!='GET'): return HttpResponse('CALL AS A GET')
+    deptName = request.GET.get('dept')
+    counter = 0
+    jsonResp = {}
+    for course in Course.objects.filter(dept_name=deptName):
+        jsonResp[counter] = { 'courseID':course.course_id }
         counter = counter + 1
     return JsonResponse(jsonResp)

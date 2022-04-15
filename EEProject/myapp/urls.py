@@ -16,9 +16,11 @@ urlpatterns = [
     path('api/F3', views.F3, name='F3'),
     path('api/F4', views.F4, name='F4'),
     path('api/F5', views.F5, name='F5'),
+    path('api/F6', views.F6, name='F6'),
     path('api/getAllClasses', views.getAllClasses, name='getAllClasses'),
-    path('api/getAllSections', views.getAllSections, name='getAllSections'),
+    path('api/getAllInstSections', views.getAllInstSections, name='getAllInstSections'),
     path('api/getAllDepts', views.getAllDepts, name='getAllDepts'),
+    path('api/getAllClassesForDept', views.getAllClassesForDept, name='getAllClassesForDept'),
     path('api/apiTest', views.apiTest, name='apiTest'),
 
     # test paths
