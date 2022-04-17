@@ -182,11 +182,11 @@ Permission group: admin
 
 Location: `myapp/api/F3`
 
-| Parameters | Values |
-|:----------:|:-------:|
-| None | None |
+| Parameters |             Values             |
+|:----------:|:------------------------------:|
+| None | `id` and `semester` and `year` |
 
-Example call:
+Example call: GET `localhost:8000/myapp/api/F3`
 
 Example response:
 
