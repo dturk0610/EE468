@@ -23,17 +23,13 @@ Accounts are handled through the built-in django account manager accessible at `
 Any user attempting to access a resource that they do not have access to will be redirected to a login page.
 
 Additionally, each account can be assigned a row from the Student or Instructor tables. This is done, again, in the built-in django account manager (`http://[hostname]/admin`). First, navigate to the Instructors / Students section on the left in the MYAPP section.
-
-
-<img src="/images/assign_user_1.png"alt="abc" />
-
-<!-- ![Assign user step 1](images/assign_user_1.png) -->
+<img src="images/assign_user_1.png" alt="abc" width=800/>
 
 Next, click one the row that you'd like to assign a user to. Note: you mist click the blue row name, not check the box. 
-![Assign user step 2](images/assign_user_2.png)
+<img src="images/assign_user_2.png" alt="abc" width=800/>
 
 You should now see a "Change Instructor" / "Change Student" page with a drop-down selection for a "User" field. 
-![Assign user step 3](images/assign_user_3.png)
+<img src="images/assign_user_3.png" alt="abc" width=800/>
 
  
  Select the corresponding used you'd like to assign to this instructor / student, and save your changes with the button at the bottom right.
