@@ -13,11 +13,30 @@ This application is uses the following python modules:
 
 and mySQL version 8.0.28.
 
+## Initial Setup
+### TODO
+
 ## Accounts
 
 Accounts are handled through the built-in django account manager accessible at `http://[hostname]/admin`. Permissions are handled via groups named `admin`, `student`, and `prof`. These groups do not have any django permissions, as accounts are limited by the name of the their joined groups. These limitations are implemented using template if conditions and manual checking in API calls.
 
 Any user attempting to access a resource that they do not have access to will be redirected to a login page.
+
+Additionally, each account can be assigned a row from the Student or Instructor tables. This is done, again, in the built-in django account manager (`http://[hostname]/admin`). First, navigate to the Instructors / Students section on the left in the MYAPP section.
+
+
+<img src="/images/assign_user_1.png"alt="abc" />
+
+<!-- ![Assign user step 1](images/assign_user_1.png) -->
+
+Next, click one the row that you'd like to assign a user to. Note: you mist click the blue row name, not check the box. 
+![Assign user step 2](images/assign_user_2.png)
+
+You should now see a "Change Instructor" / "Change Student" page with a drop-down selection for a "User" field. 
+![Assign user step 3](images/assign_user_3.png)
+
+ 
+ Select the corresponding used you'd like to assign to this instructor / student, and save your changes with the button at the bottom right.
 
 ## File Structure
 
@@ -59,7 +78,7 @@ The relevant files in the project structure are as follows (in the root `EEProje
 
 All functionality is organized via URL paths:
 
-* `myapp/`
+* `/`
   * `login`
   * `controlPanel`
   * `accounts/`
@@ -70,8 +89,8 @@ All functionality is organized via URL paths:
 
 Redirects:
 
-* `myapp/` -> `myapp/controlPanel`
-* `myapp/login` -> `accounts/login`
+* `/` -> `myapp/controlPanel`
+* `/login` -> `accounts/login`
 
 ### ControlPanel
 
