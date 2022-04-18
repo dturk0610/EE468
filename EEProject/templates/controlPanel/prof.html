@@ -2,7 +2,7 @@
 <body onload="getAllClasses(), listAllSectionInfo()">
     <div>
         <div>
-          <h3>Select semester and year to see your courses and the number of enrolled students</h3>
+          <h2>Select semester and year to see your courses and the number of enrolled students</h2>
             <label for="sem">Semester: </label>
             <select name="sem" id="semDropDown" onchange="listAllSectionInfo()">
               <option value=1>Fall</option>
@@ -21,7 +21,7 @@
         <div id="allSecInfoDiv"></div>
 
         <div>
-          <h3>Select course and section to see all enrolled students</h3>
+          <h2>Select course and section to see all enrolled students</h2>
           <label for="courseList">Select course: </label>
           <select name="courseList" id="courseDropDown" onchange="updateSections()"></select>
 
