@@ -22,7 +22,7 @@ body {
     height: 188px/*100%*/; /*set table height here; can be fixed value or %*/
     min-height: 0/*104px*/; /*if using % height, make this large enough to fit scrollbar arrows + caption + thead*/
     font-family: Verdana, Tahoma, sans-serif;
-    font-size: 15px;
+    font-size: 20px;
     line-height: 20px;
     padding: 20px 0 20px 0; /*need enough padding to make room for caption*/
     text-align: left;
