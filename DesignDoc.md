@@ -4,7 +4,7 @@
 
 ![database_diagram](images/database_diagram_model.png)
 
-## Software
+## Software ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This application is uses the following python modules:
 
@@ -16,7 +16,7 @@ and mySQL version 8.0.28.
 ## Initial Setup
 ### TODO
 
-## Accounts
+## Accounts ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Accounts are handled through the built-in django account manager accessible at `http://[hostname]/admin`. Permissions are handled via groups named `admin`, `student`, and `prof`. These groups do not have any django permissions, as accounts are limited by the name of the their joined groups. These limitations are implemented using template if conditions and manual checking in API calls.
 
@@ -34,7 +34,7 @@ You should now see a "Change Instructor" / "Change Student" page with a drop-dow
  
  Select the corresponding used you'd like to assign to this instructor / student, and save your changes with the button at the bottom right.
 
-## File Structure
+## File Structure ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The relevant files in the project structure are as follows (in the root `EEProject` directory):
 
@@ -88,11 +88,11 @@ Redirects:
 * `/` -> `myapp/controlPanel`
 * `/login` -> `accounts/login`
 
-### ControlPanel
+### ControlPanel ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This is the main hub of this application. First, if the user is not logged in, they will be redirected to a login page. Once the user has logged in, they will be shown all functions that they are permitted to use. This is done using the django template language. Internally, there are `admin.html`, `prof.html`, and `student.html` pages that hold the corresponding available functions. Using simple template language if-statements, we can determine which groups the user belongs to and include each page into the `controlPanel.html` page using template language include statements.
 
-### API
+### API ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This section details all API calls used in each required application feature. This API  is http-request based, with all data returned in JSON format. Each API call description consists of:
 
@@ -105,8 +105,7 @@ This section details all API calls used in each required application feature. Th
 
 While each API call will be called from the controlPanel page, which checks for the user's group, each API call also verifies the user's group before returning any data.
 
-### F1
-
+### F1 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Returns a list of professors sorted by one of the following criteria: by name, by dept, or by salary.
 
 Permission group: admin
@@ -146,8 +145,7 @@ Example response:
 }
 ```
 
-### F2
-
+### F2 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Returns a table of min/max/average salaries by dept.
 
 Permission group: admin
@@ -190,7 +188,7 @@ Example response:
     } 
   }
 ```
-### F3
+### F3 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Returns a table of professor name, dept, and total number of students taught by the professor in a given semester
 
 Permission group: admin
@@ -236,7 +234,7 @@ Example response:
 
 ```
 
-### F4
+### F4 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Returns the list of course sections and the number of students enrolled in each section that the professor taught in a given semester
 
 Permission group: Professors
@@ -269,7 +267,7 @@ Example response:
 }
 ```
 
-### F5
+### F5 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Returns the list of students enrolled in a course section taught by the professor in a given semester
 
 Permission group: Professors
@@ -284,7 +282,7 @@ Example call:
 
 Example response:
 
-### F6
+### F6 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Returns the list of course sections offered by department in a given semester and year.
 
 Permission group: Students
