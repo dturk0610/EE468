@@ -247,7 +247,7 @@ Location: `myapp/api/F4`
 |:---------------------:|:-----------------------------------------------------:|
 |   `sem` and `year`    | `course`, `sec`,`semester`,`year` and `numOfstudents` |
 
-Example call: /api/F4?sem=1&year=2020
+Example call: GET `localhost:8000/api/F4?sem=1&year=2020`
 
 Example response:
 ```JSON
@@ -270,7 +270,7 @@ Example response:
 ```
 
 ### F5
-Returns he list of students enrolled in a course section taught by the professor in a given semester
+Returns the list of students enrolled in a course section taught by the professor in a given semester
 
 Permission group: Professors
 
@@ -279,6 +279,10 @@ Location: `myapp/api/F5`
 | Parameters | Values |
 |:----------:|:-------:|
 | None | None |
+
+Example call: 
+
+Example response:
 
 ### F6
 Returns the list of course sections offered by department in a given semester and year.
