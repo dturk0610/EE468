@@ -44,17 +44,17 @@ def F3(request):
     logging.basicConfig(level=logging.NOTSET)
     sem = 1
     year = 2019
+    counter = 0
+    jsonRes = {}
     for i in Instructor.objects.all():
         count = 0
         for teaches in Teaches.objects.all().filter(semester = sem, year = year, id = i.id):
             for takes in Takes.objects.all().filter(semester = sem, year = year):
-                #if str(takes.course.course_id) == str(teaches.course.course_id):
-
-                logging.info(serializers.serialize('json', takes))
-            count += 1
-            logging.info(teaches)
-        logging.info(count)
-    return HttpResponse(' ')
+                if takes.course_id != teaches.course_id: continue
+                count += 1
+        jsonRes[counter] = {'InstName': i.name, 'dept': i.dept_name_id, 'numStudents': count}
+        counter += 1
+    return JsonResponse(jsonRes)
 
 @login_required
 @user_passes_test(is_prof)

@@ -197,13 +197,44 @@ Permission group: admin
 
 Location: `myapp/api/F3`
 
-| Parameters |             Values             |
-|:----------:|:------------------------------:|
-| None | `id` and `semester` and `year` |
+| Parameters |                    Values                     |
+|:----------:|:---------------------------------------------:|
+| None | `instName` and `dept` and `numStudents` |
 
-Example call: GET `localhost:8000/myapp/api/F3`
+Example call: GET `localhost:8000/api/F3`
 
 Example response:
+```JSON
+{
+  "0": {
+    "InstName": "Ubsurd",
+    "dept": "ECE",
+    "numStudents": 0
+  },
+  "1": {
+    "InstName": "RunningMan",
+    "dept": "CS",
+    "numStudents": 0
+  },
+  "2": {
+    "InstName": "Trip",
+    "dept": "CS",
+    "numStudents": 0
+  },
+  "3": {
+    "InstName": "Bro What",
+    "dept": "Physics",
+    "numStudents": 0
+  },
+  "4": {
+    "InstName": "Hou",
+    "dept": "ECE",
+    "numStudents": 0
+  },
+  ...
+}
+
+```
 
 ### F4
 Returns the list of course sections and the number of students enrolled in each section that the professor taught in a given semester
@@ -212,13 +243,31 @@ Permission group: Professors
 
 Location: `myapp/api/F4`
 
-| Parameters | Values |
-|:----------:|:-------:|
-| None | None |
+|      Parameters       |                        Values                         |
+|:---------------------:|:-----------------------------------------------------:|
+|   `sem` and `year`    | `course`, `sec`,`semester`,`year` and `numOfstudents` |
 
-Example call:
+Example call: /api/F4?sem=1&year=2020
 
 Example response:
+```JSON
+{
+  "0": {
+    "course": "EE468",
+    "sec": 1,
+    "semester": "1",
+    "year": 2020,
+    "numOfStudents": 0
+  },
+  "1": {
+    "course": "CS460",
+    "sec": 1,
+    "semester": "1",
+    "year": 2020,
+    "numOfStudents": 1
+  }
+}
+```
 
 ### F5
 Returns he list of students enrolled in a course section taught by the professor in a given semester
