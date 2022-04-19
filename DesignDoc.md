@@ -247,7 +247,7 @@ Location: `myapp/api/F4`
 |:---------------------:|:-----------------------------------------------------:|
 |   `sem` and `year`    | `course`, `sec`,`semester`,`year` and `numOfstudents` |
 
-Example call: GET `localhost:8000/api/F4?sem=1&year=2020`
+Example call: GET `localhost:8000/api/F4`
 
 Example response:
 ```JSON
@@ -291,12 +291,34 @@ Permission group: Students
 
 Location: `myapp/api/F6`
 
-| Parameters | Values |
-|:----------:|:-------:|
-| None | None |
+|   Parameters    |              Values              |
+|:---------------:|:--------------------------------:|
+| `sem` and `year` | `course`, `sec`, `sem` and `year` |
 
-Example call:
+Example call: GET `http://localhost:8000/api/F6?courseID=CS141&sem=1&year=2020`
 
 Example response:
+```JSON
+{
+  "0": {
+    "course": "CS141",
+    "sec": 1,
+    "sem": "1",
+    "year": "2020"
+  },
+  "1": {
+    "course": "CS141",
+    "sec": 2,
+    "sem": "1",
+    "year": "2020"
+  },
+  "2": {
+    "course": "CS141",
+    "sec": 3,
+    "sem": "1",
+    "year": "2020"
+  }
+}
+```
 
 ## Todo: function calls + parameters for each api
