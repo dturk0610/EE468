@@ -142,6 +142,7 @@ Example response:
     "dept_name": "Business", 
     "salary": 80000.0
   }
+  ...
 }
 ```
 
@@ -186,6 +187,7 @@ Example response:
     "max": null, 
     "avg": null
     } 
+    ...
   }
 ```
 ### F3 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -245,7 +247,7 @@ Location: `myapp/api/F4`
 |:---------------------:|:-----------------------------------------------------:|
 |   `sem` and `year`    | `course`, `sec`,`semester`,`year` and `numOfstudents` |
 
-Example call: GET `localhost:8000/api/F4`
+Example call: GET `http://localhost:8000/api/F4?sem=1&year=2020`
 
 Example response:
 ```JSON
@@ -274,13 +276,21 @@ Permission group: Professors
 
 Location: `myapp/api/F5`
 
-| Parameters | Values |
-|:----------:|:-------:|
-| None | None |
+| Parameters |    Values    |
+|:----------:|:------------:|
+| `courseID`, `secID`, `sem`, and`year` | `id` & `name` |
 
-Example call: 
+Example call: GET `http://localhost:8000/api/F5?courseID=CS460&secID=1&sem=1&year=2020`
 
 Example response:
+```JSON
+{
+  "0": {
+    "id": 12345,
+    "name": "Shankar"
+  }
+}
+```
 
 ### F6 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Returns the list of course sections offered by department in a given semester and year.
@@ -289,9 +299,9 @@ Permission group: Students
 
 Location: `myapp/api/F6`
 
-|   Parameters    |              Values              |
-|:---------------:|:--------------------------------:|
-| `sem` and `year` | `course`, `sec`, `sem` and `year` |
+|         Parameters          |              Values              |
+|:---------------------------:|:--------------------------------:|
+| `courseID`, `sem` and `year` | `course`, `sec`, `sem` and `year` |
 
 Example call: GET `http://localhost:8000/api/F6?courseID=CS141&sem=1&year=2020`
 
@@ -319,4 +329,4 @@ Example response:
 }
 ```
 
-## Todo: function calls + parameters for each api
+
