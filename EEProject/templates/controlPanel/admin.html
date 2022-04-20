@@ -1,20 +1,25 @@
 <h1>ADMIN SECTION</h1>
-<body>
+<body onload="listAllProf(),listAllDeptInfo(),listStudCountPerInst()">
     <div>
         <div>
-            <button type="button" onclick="listAllProf()">List all professors</button>
-            <input type="checkbox" id="orderName" value="name">
+            <h2>List all professors by specified order</h2>
+            <input type="checkbox" id="orderName" value="name" onchange="listAllProf()">
             <label for="orderName"> Order by name </label>
-            <input type="checkbox" id="orderDept" value="dept_name">
+            <input type="checkbox" id="orderDept" value="dept_name" onchange="listAllProf()">
             <label for="orderDept"> Order by department</label>
-            <input type="checkbox" id="orderSalary" value="salary">
+            <input type="checkbox" id="orderSalary" value="salary" onchange="listAllProf()">
             <label for="orderSalary"> Order by salary</label>
         </div>
         <div id="orderProfDiv"></div>
         
         <div>
-            <button type="buttone" onclick="listAllDeptInfo()">List all departments info</button>
+            <h2>List all departments with their min, max and avg salary</h2>
         </div>
         <div id="allDeptInfoDiv"></div>
+
+        <div>
+            <h2>All Instructors and the number of students they teach</h2>
+        </div>
+        <div id="studCountPerInstDiv"></div>
     </div>
 </body>

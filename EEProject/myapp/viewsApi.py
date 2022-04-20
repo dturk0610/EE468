@@ -34,12 +34,12 @@ def F2(request):
     counter = 0
     for dept in Department.objects.all():
         res = list(Instructor.objects.filter( dept_name = dept.dept_name ).aggregate(Min('salary'), Max('salary'), Avg('salary')).values())
-        d[counter] = {"dept":dept.dept_name, "min": res[0], "max": res[1], "avg": res[2]}
+        d[counter] = {"dept":dept.dept_name, "min sal": res[0], "max sal": res[1], "avg sal": res[2]}
         counter = counter + 1
     return JsonResponse(d)
 
-#@login_required
-#@user_passes_test(is_admin)
+@login_required
+@user_passes_test(is_admin)
 def F3(request):
     logging.basicConfig(level=logging.NOTSET)
     sem = 1
