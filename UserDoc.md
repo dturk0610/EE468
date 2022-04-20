@@ -64,14 +64,14 @@ After logging in the admin user account, User can do following tasks:
 1. Query the list of course sections offered by dept in a given semester and year.
 
 ##Now,You can see the Student section page:
-![student_section1](images/student_section1.PNG)
+![student_section1](images/student_section1.png)
 
 The user can use the drop down list menu to select the department,class and year to get the list of course sections.
 
 ##Example 1: When user selects CS department for CS141 of fall 2019:
 
-![student_section2](images/student_section2.PNG)
+![student_section2](images/student_section2.png)
 
 ##Example 2: When user selects ART department for AT200 of fall 2019:
 
-![student_section3](images/student_section3.PNG)
+![student_section3](images/student_section3.png)
