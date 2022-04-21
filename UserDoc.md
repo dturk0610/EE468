@@ -35,7 +35,7 @@ After logging in the admin user account, User can do following tasks:
 3. Create a table of professor name, dept, and total number of students taught by the professor in a given semester
    
 ##Now,You can see the admin section page:
-![admin_section1](images/admin_new.PNG)
+![admin_section1](images/admin_sec.PNG)
 
 The user can use the check boxes to list the professors ordered by the given attributes. Multiple inputs can be implemented too.
 button will execute the task.
