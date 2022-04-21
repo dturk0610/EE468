@@ -53,12 +53,22 @@ button will execute the task.
 ![admin_section4](images/admin_new3.PNG)
 
 # The Control Panel - Professor
+if you use the credentials to login for a professor account you will be redirected to the Professor section -
+
+After logging in the professor user account, User can do following tasks:
+
+1. Create the list of course sections and the number of students enrolled in each section that the professor taught in a given semester
+2. Create the list of students enrolled in a course section taught by the professor in a given semester
+
+##Now,You can see the Professor section page:
+![student_section1](images/professor1.PNG)
+
 
 ## The Control Panel - Student
 
-if you use the credentials to login for an admin account you will be redirected to the Admin section -
+if you use the credentials to login for a student account you will be redirected to the student section -
 
-After logging in the admin user account, User can do following tasks:
+After logging in the student user account, User can do following tasks:
 1. Query the list of course sections offered by dept in a given semester and year.
 
 ##Now,You can see the Student section page:
