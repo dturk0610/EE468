@@ -63,9 +63,12 @@ After logging in the professor user account, User can do following tasks:
 2. Create the list of students enrolled in a course section taught by the professor in a given semester
 
 ##Now,You can see the Professor section page:
-![student_section1](images/professor1.PNG)
+![student_section1](images/Professor2.PNG)
 
+The user can use the drop down list menu to select the Semester,Year,course and section to get the list of classes and number of students along with students list.
 
+##Example 1: The professor selects fall Semester of year 2020 and CS40 courses in section 1 of 2020 
+![student_section1](images/Professor1.PNG)
 ## The Control Panel - Student
 
 if you use the credentials to login for a student account you will be redirected to the student section -
