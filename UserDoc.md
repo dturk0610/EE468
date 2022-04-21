@@ -22,7 +22,7 @@ Users can now be added and assigned to each group.
 After creating the user under the required group, the user can now login using http://127.0.0.1:8000/accounts/login/ 
 
 Here is the login page:
-![login page](images/login%20page.JPG)
+![login page](images/login_new.PNG)
 The user can type in the credential of the user account created and this page redirect to the respected control panel.
 
 
@@ -35,24 +35,22 @@ After logging in the admin user account, User can do following tasks:
 3. Create a table of professor name, dept, and total number of students taught by the professor in a given semester
    
 ##Now,You can see the admin section page:
-![admin_section1](images/admin_section1.PNG)
+![admin_section1](images/admin_new.PNG)
 
-The user can use the check boxes to list the professors ordered by the given attributes. Multiple inputs can be implemented too. Then clicking on the "list all professors"
+The user can use the check boxes to list the professors ordered by the given attributes. Multiple inputs can be implemented too.
 button will execute the task.
-
-The user can also click the "List all departments info " for getting table.
 
 ##Example 1: The list of professors ordered by name:
 
-![admin_section2](images/admin_section2.PNG)
+![admin_section2](images/admin_new1.PNG)
 
 ##Example 2: The list of professors ordered by all attributes:
 
-![admin_section3](images/admin_section3.PNG)
+![admin_section3](images/admin_new2.PNG)
 
-##Example 3: The list of all departments information:
+##Example 3: The list of all departments and instructors information:
 
-![admin_section4](images/admin_section4.PNG)
+![admin_section4](images/admin_new3.PNG)
 
 # The Control Panel - Professor
 
