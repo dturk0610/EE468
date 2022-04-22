@@ -4,7 +4,9 @@
 
 ![database_diagram](images/database_diagram_model.png)
 
-## Software ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+## Software
+
+---
 
 This application is uses the following python modules:
 
@@ -13,28 +15,46 @@ This application is uses the following python modules:
 
 and mySQL version 8.0.28.
 
-## Initial Setup
+
+
+
+
+
 ### TODO
 
-## Accounts ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+## Accounts 
+
+---
 
 Accounts are handled through the built-in django account manager accessible at `http://[hostname]/admin`. Permissions are handled via groups named `admin`, `student`, and `prof`. These groups do not have any django permissions, as accounts are limited by the name of the their joined groups. These limitations are implemented using template if conditions and manual checking in API calls.
 
 Any user attempting to access a resource that they do not have access to will be redirected to a login page.
+Additionally, each account can be assigned a row from the Student or Instructor tables. This is done, again, in the built-in django account manager (`http://[hostname]/admin`). This is explained in more detail in the setup section.
 
-Additionally, each account can be assigned a row from the Student or Instructor tables. This is done, again, in the built-in django account manager (`http://[hostname]/admin`). First, navigate to the Instructors / Students section on the left in the MYAPP section.
-<img src="images/assign_user_1.png" alt="abc" width=800/>
+For a more specific explanation of how accounts are used:
+Each api function has two decorations: `@login_required()` and `@user_passes_test(f: function)`. The `login_required` tells django to redirect the user if they have not logged into an account yet. `user_passes_test(f: function)` will only execute the function if when the function f is given the user object, it returns True. The test functions that are used are found in `authTools.py`, and are as simple as `is_student(user)`, which returns True if the user is part of the student group.
 
-Next, click one the row that you'd like to assign a user to. Note: you mist click the blue row name, not check the box. 
-<img src="images/assign_user_2.png" alt="abc" width=800/>
+The control panel works slightly differently. As mentioned above, the information displayed to the user is dependant on their account. A block of template code first loops through each group that a user is in 
 
-You should now see a "Change Instructor" / "Change Student" page with a drop-down selection for a "User" field. 
-<img src="images/assign_user_3.png" alt="abc" width=800/>
+`{% for group in request.user.groups.all %}`
 
- 
- Select the corresponding used you'd like to assign to this instructor / student, and save your changes with the button at the bottom right.
+Then it includes other html pages that correspond to each group.
 
-## File Structure ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```html
+{% if group.name == 'student' %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/scrollingTable.css' %}">
+  <script src="{% static 'scripts/student.js' %}"></script>
+  <script src="{% static 'scripts/table.js' %}"></script>
+  {% include 'controlPanel/student.html' %}
+{% endif %}
+```
+
+Normally, only one section should appear for each user, as normally each user should only be in one group.
+
+## File Structure 
+
+---
 
 The relevant files in the project structure are as follows (in the root `EEProject` directory):
 
@@ -88,11 +108,15 @@ Redirects:
 * `/` -> `myapp/controlPanel`
 * `/login` -> `accounts/login`
 
-### ControlPanel ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+### ControlPanel 
+
+---
 
 This is the main hub of this application. First, if the user is not logged in, they will be redirected to a login page. Once the user has logged in, they will be shown all functions that they are permitted to use. This is done using the django template language. Internally, there are `admin.html`, `prof.html`, and `student.html` pages that hold the corresponding available functions. Using simple template language if-statements, we can determine which groups the user belongs to and include each page into the `controlPanel.html` page using template language include statements.
 
-### API ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+### API 
+
+---
 
 This section details all API calls used in each required application feature. This API  is http-request based, with all data returned in JSON format. Each API call description consists of:
 
@@ -105,7 +129,10 @@ This section details all API calls used in each required application feature. Th
 
 While each API call will be called from the controlPanel page, which checks for the user's group, each API call also verifies the user's group before returning any data.
 
-### F1 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+### F1 
+
+---
+
 Returns a list of professors sorted by one of the following criteria: by name, by dept, or by salary.
 
 Permission group: admin
@@ -146,7 +173,10 @@ Example response:
 }
 ```
 
-### F2 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+### F2 
+
+---
+
 Returns a table of min/max/average salaries by dept.
 
 Permission group: admin
@@ -190,7 +220,10 @@ Example response:
     ...
   }
 ```
-### F3 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+### F3 
+
+---
+
 Returns a table of professor name, dept, and total number of students taught by the professor in a given semester
 
 Permission group: admin
@@ -236,7 +269,10 @@ Example response:
 
 ```
 
-### F4 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+### F4 
+
+---
+
 Returns the list of course sections and the number of students enrolled in each section that the professor taught in a given semester
 
 Permission group: Professors
@@ -269,7 +305,10 @@ Example response:
 }
 ```
 
-### F5 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+### F5 
+
+---
+
 Returns the list of students enrolled in a course section taught by the professor in a given semester
 
 Permission group: Professors
@@ -292,7 +331,10 @@ Example response:
 }
 ```
 
-### F6 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+### F6 
+
+---
+
 Returns the list of course sections offered by department in a given semester and year.
 
 Permission group: Students
