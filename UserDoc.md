@@ -100,7 +100,7 @@ if you use the credentials to login for a student account you will be redirected
 After logging in the student user account, User can do following tasks:
 1. Query the list of course sections offered by dept in a given semester and year.
 
-## Now,You can see the Student section page:
+## Now, You can see the Student section page:
 <img src='images/student_section1.png' width=700>
 
 The user can use the drop down list menu to select the department,class and year to get the list of course sections.

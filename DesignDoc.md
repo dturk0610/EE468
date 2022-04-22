@@ -16,12 +16,6 @@ This application is uses the following python modules:
 and mySQL version 8.0.28.
 
 
-
-
-
-
-### TODO
-
 ## Accounts 
 
 ---
@@ -87,8 +81,6 @@ The relevant files in the project structure are as follows (in the root `EEProje
 | `templates/test.html` | General test page |
 | `manage.py` | Django server manager utility |
 | `university.sql` | Mysql database export |
-
-## TODO: finish
 
 ### URL Paths
 
