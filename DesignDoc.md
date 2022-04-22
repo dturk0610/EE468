@@ -255,8 +255,7 @@ Example response:
     "InstName": "Hou",
     "dept": "ECE",
     "numStudents": 0
-  },
-  ...
+  }
 }
 
 ```
