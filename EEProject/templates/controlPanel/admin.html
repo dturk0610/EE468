@@ -19,6 +19,20 @@
 
         <div>
             <h2>All Instructors and the number of students they teach</h2>
+            <label for="sem">Semester: </label>
+            <select name="sem" id="semDropDown" onchange="listStudCountPerInst()">
+              <option value=1>Fall</option>
+              <option value=2>Spring</option>
+              <option value=3>Summer</option>
+              <option value=4>Winter</option>
+            </select>
+            <label for="yr">Year: </label>
+            <select name="yr" id="yrDropDown" onchange="listStudCountPerInst()">
+              <option value=2019>2019</option>
+              <option value=2020>2020</option>
+              <option value=2021>2021</option>
+              <option value=2022>2022</option>
+            </select>
         </div>
         <div id="studCountPerInstDiv"></div>
     </div>

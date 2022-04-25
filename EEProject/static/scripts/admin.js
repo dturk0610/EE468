@@ -51,7 +51,11 @@ function listStudCountPerInst(){
     const Http = new XMLHttpRequest();
     const url = '/api/F3';
 
-    Http.open("GET", url);
+    var semDropDown = document.getElementById('semDropDown');
+    var yrDropDown = document.getElementById('yrDropDown');
+    var addToGET = "?sem=" + semDropDown.value + "&year=" + yrDropDown.value;
+
+    Http.open("GET", url + addToGET);
     Http.send();
 
     Http.onreadystatechange=( e )=>{

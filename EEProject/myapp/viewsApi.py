@@ -42,8 +42,8 @@ def F2(request):
 @user_passes_test(is_admin)
 def F3(request):
     logging.basicConfig(level=logging.NOTSET)
-    sem = 1
-    year = 2019
+    sem = request.GET.get('sem', 1)
+    year = request.GET.get('year', 2020)
     counter = 0
     jsonRes = {}
     for i in Instructor.objects.all():
@@ -51,7 +51,7 @@ def F3(request):
         for teaches in Teaches.objects.all().filter(semester = sem, year = year, id = i.id):
             for takes in Takes.objects.all().filter(semester = sem, year = year):
                 if takes.course_id != teaches.course_id: continue
-                count += 1
+                count = count + 1
         jsonRes[counter] = {'InstName': i.name, 'dept': i.dept_name_id, 'numStudents': count}
         counter += 1
     return JsonResponse(jsonRes)
